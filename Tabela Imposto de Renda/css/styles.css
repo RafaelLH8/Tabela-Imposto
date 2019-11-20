@@ -1,0 +1,130 @@
+@font-face{
+  font-family:sans;
+  src: url("../fonts/PublicSans.ttf");
+}
+
+body{
+    margin:0;
+}
+
+header{
+  font-family:sans;
+  float:left;
+  height:18vw;
+  border:1px solid #000000;
+}
+
+#logo{
+  width:25%;
+  margin:0;
+  height:18vw;
+  float:left;
+}
+
+#texto-header{
+  font-size:7vw;
+  width:75%;
+  float:left;
+  color:#1a8d8f;
+  text-shadow: 1px 1px 0px #FFFFFF, 0.2vw 0.1vw 0px rgba(0,0,0,0.15);
+  text-align:center;
+  height:18vw;
+}
+
+main{
+  width:100%;
+  font-family:sans;
+}
+
+fieldset{
+  width:98.2%;
+  margin-left:1px;
+  padding-right:0px;
+}
+
+legend{
+  font-size:5vw;
+}
+
+label{
+  font-size:3.85vw;
+  width:25%;
+  float:left;
+  text-align:right;
+}
+
+input{
+  font-size:4vw;
+  width:72.5%;
+}
+
+#salario{
+  margin-top:2vw;
+}
+
+#salario-label{
+  margin-top:2vw;
+}
+
+#lista{
+  font-family:sans;
+}
+
+button{
+  margin-top:3vw;
+  width:16.66%;
+  font-size:3vw;
+  margin-left:41.66%;
+}
+
+th{
+  font-size:3vw;
+}
+
+@media only screen and (min-width:1024px){
+  header{
+    height:12vw;
+    width:66.66%;
+    margin-left:16.66%;
+  }
+
+  #texto-header{
+    width:75%;
+    font-size:4vw;
+    height:12vw;
+    margin-top:1.25vw;
+  }
+
+  #logo{
+    width:25%;
+    height:12vw;
+  }
+
+  legend{
+    font-size:3vw;
+  }
+
+  fieldset{
+    width:98.4%;
+  }
+
+  label{
+    font-size:1.5vw;
+    margin-top:
+    width:20%;
+    float:left;
+    text-align:center;
+    margin-top:1vw;
+  }
+
+  input{
+    font-size:2vw;
+    width:73%;
+    margin-right:1vw;
+    height:3vw;
+  }
+
+  #salario{
+    margin-top:1vw;
+  }
+}

@@ -1,0 +1,119 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./css/styles.css">
+
+  </head>
+
+  <body>
+    <header>
+      <img id="logo" src="./imagens/logo.png" alt="logo">
+      <div id="texto-header">
+        Calculadora de INSS, IRPF e Salário Líquido
+      </div>
+    </header>
+    <main>
+      <fieldset>
+        <legend>Cadastro de Salário Bruto:</legend>
+        <label>Nome: </label>
+        <input type="text" id="nome" name="nome">
+        <label id="salario-label">Salário Bruto: </label>
+        <input type="number" id="salario" name="salario">
+        <button>Registrar</button>
+      </fieldset>
+    </main>
+
+    <div>
+		  <table border="1" id="lista">
+	     <tbody>
+         <tr>
+          <th>Nome</th>
+          <th>Salário Bruto</th>
+          <th>% Desconto INSS</th>
+          <th>Desconto INSS</th>
+          <th>% Desconto IRPF</th>
+          <th>Desconto IRPF</th>
+          <th>Salário Líquido</th>
+	       </tr>
+	     </tbody>
+      </table>
+		</div>
+    <script>
+      var Pessoa= function(){
+					this.nome;
+					this.salarioBruto;
+          this.PdescontoINSS;
+          this.descontoINSS;
+          this.PdescontoIRPF;
+          this.PdescontoIRPF;
+          this.salarioLiquido;
+				}
+
+      var pessoas= new Array();
+
+			var btn= document.querySelector("button");
+
+      btn.onclick=function(){
+        pessoa = new Pessoa();
+        pessoa.nome=document.getElementById("nome").value;
+        pessoa.salarioBruto= parseFloat(document.getElementById("salario").value);
+        if(pessoa.salarioBruto<=1400000){
+          pessoa.PdescontoINSS = 8;
+          pessoa.descontoINSS = parseFloat(pessoa.salarioBruto)*8/100;
+        }
+        else if(pessoa.salarioBruto > 1400000 && pessoa.salarioBruto <= 233200){
+          pessoa.PdescontoINSS = 9;
+          pessoa.descontoINSS = parseFloat(pessoa.salarioBruto*9/100);
+        }
+        else if(pessoa.salarioBruto >= 233200){
+          pessoa.PdescontoINSS = 11;
+          pessoa.descontoINSS = parseFloat(pessoa.salarioBruto*11)/100;
+        }
+        if(pessoa.salarioBruto >= 190399 && pessoa.salarioBruto <= 282665){
+          pessoa.PdescontoIRPF = 7.5;
+          pessoa.descontoIRPF = parseFloat(pessoa.salarioBruto*7.5)/100;
+        }
+        else if(pessoa.salarioBruto >= 282666 && pessoa.salarioBruto <= 375105){
+          pessoa.PdescontoIRPF = 15;
+          pessoa.descontoIRPF = parseFloat(pessoa.salarioBruto*15)/100;
+        }
+        else if(pessoa.salarioBruto >= 375106 && pessoa.salarioBruto <= 466408){
+          pessoa.PdescontoIRPF = 22.5;
+          pessoa.descontoIRPF = parseFloat(pessoa.salarioBruto*22.5)/100;
+        }
+        else if(pessoa.salarioBruto >= 466409){
+          pessoa.PdescontoIRPF = 27.5;
+          pessoa.descontoIRPF = parseFloat(pessoa.salarioBruto*27.5)/100;
+        }
+        else if(pessoa.salarioBruto < 190399){
+          pessoa.PdescontoIRPF = 0;
+          pessoa.descontoIRPF = 0;
+        }
+        pessoa.salarioLiquido = (pessoa.salarioBruto - pessoa.descontoIRPF - pessoa.descontoINSS);
+        pessoa.salarioBruto=document.getElementById("salario").value;
+        pessoas.push(pessoa);
+        atualizarTabela(pessoa);
+      }
+
+      var atualizarTabela= function(pessoa){
+			  var tabela = document.getElementById('lista');
+        var numeroLinhas = tabela.rows.length;
+        var linha = tabela.insertRow(numeroLinhas);
+        var celNome = linha.insertCell(0);
+        var celSalarioBruto = linha.insertCell(1);
+        var celPdescontoINSS = linha.insertCell(2);
+        var celdescontoINSS = linha.insertCell(3);
+        var celPdescontoIRPF = linha.insertCell(4);
+        var celdescontoIRPF = linha.insertCell(5);
+        var celSalarioLiquido = linha.insertCell(6);
+        celNome.innerHTML = pessoa.nome;
+        celSalarioBruto.innerHTML =  pessoa.salarioBruto;
+        celPdescontoINSS.innerHTML = pessoa.PdescontoINSS;
+        celdescontoINSS.innerHTML  = pessoa.descontoINSS;
+        celPdescontoIRPF.innerHTML = pessoa.PdescontoIRPF;
+        celdescontoIRPF.innerHTML = pessoa.descontoIRPF;
+        celSalarioLiquido.innerHTML = pessoa.salarioLiquido;
+      }
+    </script>
+  </body>
+</html>
